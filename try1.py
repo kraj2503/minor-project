@@ -1,6 +1,8 @@
 import requests
 import json
 import pickle
+import warnings
+
 # import train1 as t1
 
 def get_api_key_from_config(file_path='config.txt'):
@@ -75,6 +77,7 @@ def predict_aqi(data):
         data['temp_c'], 
         data['humidity']
     ]]
+    warnings.filterwarnings('ignore', '.*X does not have valid feature names.*')
     predicted_aqi = model.predict(sample_data)
 
     # Return the predicted AQI
