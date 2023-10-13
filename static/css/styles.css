@@ -28,6 +28,8 @@ label {
 input[type="text"], input[type="range"], input[type="submit"] {
     width: 100%;
     padding: 10px;
+    padding-left: 0px;  /* Set the left padding */
+    padding-right: 3px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 3px;
