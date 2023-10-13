@@ -1,98 +1,10 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AQI Predictor</title>
-</head>
-<body>
-    <h2>AQI Prediction</h2>
-
-    <form action="/" method="post">
-        City: <input type="text" name="city" required><br><br>
-        Days: <input type="range" name="days" min="1" max="4" value="1"><br><br>
-        <input type="submit" value="Submit">
-    </form>
-
-    {% if output %}
-        <h3>Results:</h3>
-        <ul>
-            {% for line in output %}
-                <li>{{ line }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AQI Predictor</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h2, h3 {
-            color: #333;
-            text-align: center;
-        }
-
-        form {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        input[type="text"], input[type="range"], input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        li:last-child {
-            border: none;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
     <h2>AQI Prediction</h2>
@@ -100,28 +12,10 @@
     <form action="/" method="post">
         <label>
             City: 
-            <input type="text" name="city" required>
+            <input type="text" name="city" id="cityInput" required>
         </label>
-        Days: <button onclick="decrement()">-</button> <span id="dayCount">0</span> <button onclick="increment()">+</button>
+        Days: <button type="button" onclick="decrement()">-</button> <span id="dayCount">0</span> <button type="button" onclick="increment()">+</button>
         <input type="hidden" name="days" id="dayInput" value="0">
-        
-        <script>
-            let count = 0;
-            function decrement() {
-                if(count > 0) {
-                    count--;
-                    document.getElementById('dayCount').innerText = count;
-                    document.getElementById('dayInput').value = count;
-                }
-            }
-            function increment() {
-                if(count < 4) {
-                    count++;
-                    document.getElementById('dayCount').innerText = count;
-                    document.getElementById('dayInput').value = count;
-                }
-            }
-        </script>
         
         <input type="submit" value="Submit">
     </form>
@@ -134,5 +28,7 @@
             {% endfor %}
         </ul>
     {% endif %}
+
+    <script src="/static/js/scripts.js"></script>
 </body>
 </html>

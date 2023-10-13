@@ -3,8 +3,21 @@ import json
 import pickle
 # import train1 as t1
 
-def fetch_weather_aqi_data(city,days):
-    url = f"https://api.weatherapi.com/v1/forecast.json?key=abc088b0e9344cada2994454230810&q={city}&days={days}&aqi=yes&alerts=no"
+def get_api_key_from_config(file_path='config.txt'):
+    with open(file_path, 'r') as f:
+        for line in f:
+            if line.startswith('WEATHER_API_KEY'):
+                return line.split('=')[1].strip()
+    return None
+
+
+# API_KEY = get_api_key_from_config()
+
+
+def fetch_weather_aqi_data(city,days=0):
+    
+    API_KEY = get_api_key_from_config()
+    url = f"https://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={city}&days={days}&aqi=yes&alerts=no"
     response = requests.get(url)
     data = response.json()
 
