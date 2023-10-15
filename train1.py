@@ -38,3 +38,19 @@ model_pkl_file = "model.pkl"
 
 with open(model_pkl_file, "wb") as file:
     pickle.dump(model, file)
+
+
+# making graph
+import matplotlib.pyplot as plt
+
+# Predicting AQI values on the test dataset
+y_pred = model.predict(X_test)
+
+# Plotting actual vs predicted AQI values
+plt.figure(figsize=(12, 6))
+plt.scatter(y_test, y_pred, alpha=0.5)
+plt.title('Actual vs Predicted AQI')
+plt.xlabel('Actual AQI')
+plt.ylabel('Predicted AQI')
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='red')  # Diagonal line
+plt.show()
